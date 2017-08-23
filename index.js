@@ -94,7 +94,7 @@ class SettingsList extends React.Component {
       return (
         <View key={'group_' + index}>
           {group.other}
-          <Text style={[{margin:5},group.header.headerStyle]} numberOfLines={1} ellipsizeMode="tail" ref={group.header.headerRef}>{group.header.headerText}</Text>
+          <Text style={[{margin:5},group.header.headerStyle]} numberOfLines={group.header.headerNumberOfLines} ellipsizeMode="tail" ref={group.header.headerRef}>{group.header.headerText}</Text>
           {items}
         </View>
       )
@@ -270,6 +270,12 @@ SettingsList.Header = React.createClass({
     headerText: React.PropTypes.string,
     headerStyle: Text.propTypes.style,
     headerRef: React.PropTypes.func,
+    headerNumberOfLines: React.PropTypes.number,
+  },
+  getDefaultProps() {
+    return {
+      headerNumberOfLines: 1,
+    };
   },
   /**
    * not directly rendered
